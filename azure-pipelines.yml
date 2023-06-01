@@ -1,0 +1,27 @@
+# Publishing extensions to VS Marketplace using SP
+
+trigger:
+  - main
+
+jobs:
+- job: build_vsix
+  displayName: Building VSIX
+  pool:
+    vmImage: "windows-latest"
+  steps:
+  - task: VSBuild@1
+    inputs:
+      solution: '**\*.sln'
+      configuration: 'Release'
+
+- job: publish_artificat
+  displayName: Publishing artificat
+  pool:
+    vmImage: "windows-latest"
+  dependsOn: build_calculator
+  steps:
+    - task: PublishPipelineArtifact@1
+      inputs:
+        targetPath: $(System.DefaultWorkingDirectory)/Calculator/bin/Release/Calculator.exe
+        artifactName: Calculator
+    
