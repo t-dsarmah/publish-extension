@@ -9,10 +9,10 @@ jobs:
   pool:
     vmImage: "windows-latest"
   steps:
-  - task: VSBuild@1
+  - task: PackageAzureDevOpsExtension@4
     inputs:
-      solution: '**\*.sln'
-      configuration: 'Release'
+      rootFolder: '$(System.DefaultWorkingDirectory)'
+      updateTasksVersion: false
 
 - job: publish_artificat
   displayName: Publishing artificat
