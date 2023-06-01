@@ -18,10 +18,10 @@ jobs:
   displayName: Publishing artificat
   pool:
     vmImage: "windows-latest"
-  dependsOn: build_calculator
+  dependsOn: build_vsix
   steps:
     - task: PublishPipelineArtifact@1
       inputs:
-        targetPath: $(System.DefaultWorkingDirectory)/Calculator/bin/Release/Calculator.exe
-        artifactName: Calculator
+        targetPath: $(System.DefaultWorkingDirectory)/*.vsix
+        artifactName: extension
     
