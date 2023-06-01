@@ -10,4 +10,4 @@ $accessToken = az account get-access-token --resource 499b84ac-1321-427f-aa17-26
 
 # tfx extension publish --publisher <PUBLISHER-ID> --vsix <PATH-TO-VSIX-FILE> --auth-type pat -t $accessToken
 
-tfx extension publish --publisher dsarmah --vsix .\dsarmah.my-first-extension-deepam-sarmah-1.0.0.vsix --auth-type pat -t $accessToken
+tfx extension publish --publisher dsarmah --vsix "$(System.DefaultWorkingDirectory)/dsarmah.my-first-extension-deepam-sarmah-1.0.0.vsix" --auth-type pat -t $accessToken
