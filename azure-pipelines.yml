@@ -9,6 +9,9 @@ jobs:
   pool:
     vmImage: "windows-latest"
   steps:
+  - task: TfxInstaller@4
+    inputs:
+      version: 'v0.x'
   - task: PackageAzureDevOpsExtension@4
     inputs:
       rootFolder: '$(System.DefaultWorkingDirectory)'
