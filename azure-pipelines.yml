@@ -4,7 +4,7 @@ trigger:
   - main
 
 jobs:
-- job: build_vsix
+- job: just_vsix
   displayName: Building VSIX
   pool:
     vmImage: "windows-latest"
@@ -12,19 +12,8 @@ jobs:
   - task: TfxInstaller@4
     inputs:
       version: 'v0.x'
-  - task: PackageAzureDevOpsExtension@4
+  - task: PublishPipelineArtifact@1
     inputs:
-      rootFolder: '$(System.DefaultWorkingDirectory)'
-      updateTasksVersion: false
-
-- job: publish_artificat
-  displayName: Publishing artificat
-  pool:
-    vmImage: "windows-latest"
-  dependsOn: build_vsix
-  steps:
-    - task: PublishPipelineArtifact@1
-      inputs:
-        targetPath: $(System.DefaultWorkingDirectory)/*.vsix
-        artifactName: extension
+      targetPath: $(System.DefaultWorkingDirectory)/*.vsix
+      artifactName: extension
     
