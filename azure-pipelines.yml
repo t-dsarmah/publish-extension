@@ -1,7 +1,5 @@
 # Publishing extensions to VS Marketplace using SP
 
-trigger:
-  - main
 
 jobs:
 - job: just_vsix
@@ -16,6 +14,16 @@ jobs:
     inputs:
       command: 'install'
       workingDir: '$(System.DefaultWorkingDirectory)/packages'
+
+  - task: PowerShell@2
+    inputs:
+      targetType: 'inline'
+      script: |
+        # Write your PowerShell commands here.
+        
+        Write-Host "Hello World"
+        
+        npm list --depth=0
   - task: PowerShell@2
     inputs:
       targetType: 'inline'
