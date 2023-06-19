@@ -6,16 +6,10 @@ trigger:
 jobs:
 - job: just_vsix
   displayName: Building VSIX
-  pool:
-    vmImage: "windows-latest"
   steps:
   - task: TfxInstaller@4
     inputs:
       version: 'v0.x'
-  - task: PublishPipelineArtifact@1
-    inputs:
-      targetPath: $(System.DefaultWorkingDirectory)/dsarmah.my-first-extension-deepam-sarmah-1.0.3.vsix
-      artifactName: extension
   - task: PowerShell@2
     inputs:
       targetType: 'inline'
@@ -32,5 +26,7 @@ jobs:
         
         # tfx extension publish --publisher <PUBLISHER-ID> --vsix <PATH-TO-VSIX-FILE> --auth-type pat -t $accessToken
         
-        tfx extension publish --publisher dsarmah --vsix .\dsarmah.my-first-extension-deepam-sarmah-1.0.0.vsix --auth-type pat -t $accessToken
+        # tfx extension publish --publisher dsarmah --vsix .\dsarmah.my-first-extension-deepam-sarmah-1.0.6.vsix --auth-type pat -t $accessToken
+        
+        tfx extension publish --publisher dsarmah --auth-type pat -t $accessToken
     
