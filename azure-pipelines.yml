@@ -10,6 +10,10 @@ jobs:
   - task: TfxInstaller@4
     inputs:
       version: 'v0.x'
+  - task: Npm@1
+    inputs:
+      command: 'install'
+      workingDir: 'packages'
   - task: PowerShell@2
     inputs:
       targetType: 'inline'
