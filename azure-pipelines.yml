@@ -1,5 +1,7 @@
 # Publishing extensions to VS Marketplace using SP
 
+trigger:
+  - main
 
 jobs:
 - job: just_vsix
