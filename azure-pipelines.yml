@@ -22,6 +22,7 @@ jobs:
         # Write your PowerShell commands here.
         
         npm i azure-devops-extension-sdk
+        npm install vss-web-extension-sdk
 
         npm list --depth=0
   - task: PowerShell@2
