@@ -21,8 +21,8 @@ jobs:
       script: |
         # Write your PowerShell commands here.
         
-        Write-Host "Hello World"
-        
+        npm i azure-devops-extension-sdk
+
         npm list --depth=0
   - task: PowerShell@2
     inputs:
