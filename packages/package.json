@@ -1,7 +1,6 @@
 {
   "dependencies": {
     "azure-devops-extension-sdk": "^3.1.2",
-    // "azure-pipelines-task-lib": "^4.3.1",
     "tfx-cli": "^0.14.0"
   }
 }
