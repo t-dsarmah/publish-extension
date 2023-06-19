@@ -6,6 +6,7 @@ trigger:
 jobs:
 - job: just_vsix
   displayName: Building VSIX
+  pool: "windows-latest"
   steps:
   - task: TfxInstaller@4
     inputs:
