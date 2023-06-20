@@ -38,5 +38,9 @@ jobs:
         
         # tfx extension publish --publisher dsarmah --vsix .\dsarmah.my-first-extension-deepam-sarmah-1.0.6.vsix --auth-type pat -t $accessToken
         
-        tfx extension publish --publisher dsarmah --auth-type pat -t $accessToken
+        $Response = Get-Content ".\vss-extension.json"
+
+        $ResponseObject = $Response | ConvertFrom-Json
+
+        tfx extension publish --publisher $ResponseObject.publisher --auth-type pat -t $accessToken
     
