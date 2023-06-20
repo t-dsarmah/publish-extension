@@ -9,14 +9,9 @@ jobs:
   pool:
     vmImage: 'windows-latest'
   steps:
-  - task: TfxInstaller@4
-    inputs:
-      version: 'v0.x'
-  # - task: Npm@1
+  # - task: TfxInstaller@4
   #   inputs:
-  #     command: 'install'
-  #     workingDir: '$(System.DefaultWorkingDirectory)/packages'
-
+  #     version: 'v0.x'
   - task: PowerShell@2
     inputs:
       targetType: 'inline'
@@ -25,6 +20,7 @@ jobs:
         
         npm i azure-devops-extension-sdk
         npm install vss-web-extension-sdk
+        npm i tfx-cli
 
         npm list --depth=0
   - task: PowerShell@2
