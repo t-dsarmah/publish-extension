@@ -27,7 +27,7 @@ jobs:
     inputs:
       azureSubscription: 'IDC Special Clouds (Test)(6e007163-28ab-48d9-af19-4382829fabb8)'
       KeyVaultName: 'SPSec'
-      SecretsFilter: 'PipelineSpSecret'
+      SecretsFilter: 'PipelineSpSecret, SP-Client-ID'
       RunAsPreJob: false
       
   - task: PowerShell@2
@@ -38,7 +38,7 @@ jobs:
         
         # az login --service-principal --tenant <tenant-id> --username <app-id> --password <password-or-cert>
         
-        az login  --allow-no-subscriptions --service-principal --tenant 72f988bf-86f1-41af-91ab-2d7cd011db47 --username f0df0d20-3823-4657-87b1-3082030e2006 --password $(PipelineSpSecret)
+        az login  --allow-no-subscriptions --service-principal --tenant 72f988bf-86f1-41af-91ab-2d7cd011db47 --username $(SP-Client-ID) --password $(PipelineSpSecret)
         
         Write-Host "Obtain access token for Service Principal"
         
