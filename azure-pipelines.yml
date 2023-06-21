@@ -5,13 +5,15 @@ trigger:
 
 jobs:
 - job: just_vsix
-  displayName: Building VSIX
+  displayName: Publish VSIX
   pool:
     vmImage: 'windows-latest'
   steps:
+
   - task: TfxInstaller@4
     inputs:
       version: 'v0.x'
+      
   - task: PowerShell@2
     inputs:
       targetType: 'inline'
@@ -20,12 +22,14 @@ jobs:
         
         npm i azure-devops-extension-sdk
         npm install vss-web-extension-sdk
+  
   - task: AzureKeyVault@2
     inputs:
       azureSubscription: 'IDC Special Clouds (Test)(6e007163-28ab-48d9-af19-4382829fabb8)'
       KeyVaultName: 'SPSec'
       SecretsFilter: 'PipelineSpSecret'
       RunAsPreJob: false
+      
   - task: PowerShell@2
     inputs:
       targetType: 'inline'
@@ -39,10 +43,6 @@ jobs:
         Write-Host "Obtain access token for Service Principal"
         
         $accessToken = az account get-access-token --resource 499b84ac-1321-427f-aa17-267ca6975798 --query "accessToken" --output tsv
-        
-        # tfx extension publish --publisher <PUBLISHER-ID> --vsix <PATH-TO-VSIX-FILE> --auth-type pat -t $accessToken
-        
-        # tfx extension publish --publisher dsarmah --vsix .\dsarmah.my-first-extension-deepam-sarmah-1.0.6.vsix --auth-type pat -t $accessToken
         
         $Response = Get-Content ".\vss-extension.json"
 
