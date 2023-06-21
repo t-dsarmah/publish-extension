@@ -4,7 +4,7 @@ trigger:
   - main
 
 jobs:
-- job: just_vsix
+- job: publish_vsix
   displayName: Publish VSIX
   pool:
     vmImage: 'windows-latest'
