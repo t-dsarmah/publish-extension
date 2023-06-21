@@ -20,6 +20,12 @@ jobs:
         
         npm i azure-devops-extension-sdk
         npm install vss-web-extension-sdk
+  - task: AzureKeyVault@2
+    inputs:
+      azureSubscription: 'IDC Special Clouds (Test)(6e007163-28ab-48d9-af19-4382829fabb8)'
+      KeyVaultName: 'SPSec'
+      SecretsFilter: 'PipelineSpSecret'
+      RunAsPreJob: false
   - task: PowerShell@2
     inputs:
       targetType: 'inline'
