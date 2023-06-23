@@ -37,7 +37,6 @@ jobs:
       Client Secret Filter: 'PipelineSpSecret'
       Manifest File: 'vss-extension.json'
 
-
   # - task: PowerShell@2
   #   inputs:
   #     targetType: 'inline'
