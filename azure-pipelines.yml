@@ -32,10 +32,11 @@ jobs:
 
   - task: PublishExtensionSP@0
     inputs:
-      Tenant ID: '72f988bf-86f1-41af-91ab-2d7cd011db47'
-      Client ID Filter: 'SP-Client-ID'
-      Client Secret Filter: 'PipelineSpSecret'
-      Manifest File: 'vss-extension.json'
+      TenantID: '72f988bf-86f1-41af-91ab-2d7cd011db47'
+      ClientIDFilter: 'SP-Client-ID'
+      ClientSecretFilter: 'PipelineSpSecret'
+      ManifestFile: 'vss-extension.json'
+
 
   # - task: PowerShell@2
   #   inputs:
