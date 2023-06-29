@@ -30,31 +30,23 @@ jobs:
       SecretsFilter: 'PipelineSpSecret, SP-Client-ID'
       RunAsPreJob: false
 
-  - task: PublishExtensionSP@0
+  - task: PowerShell@2
     inputs:
-      Tenant ID: '72f988bf-86f1-41af-91ab-2d7cd011db47'
-      Client ID Filter: 'SP-Client-ID'
-      Client Secret Filter: 'PipelineSpSecret'
-      Manifest File: 'vss-extension.json'
+      targetType: 'inline'
+      script: |
+        Write-Host "Logging in with a service principal"
+        
+        # az login --service-principal --tenant <tenant-id> --username <app-id> --password <password-or-cert>
+        
+        az login  --allow-no-subscriptions --service-principal --tenant 72f988bf-86f1-41af-91ab-2d7cd011db47 --username $(SP-Client-ID) --password $(PipelineSpSecret)
+        
+        Write-Host "Obtain access token for Service Principal"
+        
+        $accessToken = az account get-access-token --resource 499b84ac-1321-427f-aa17-267ca6975798 --query "accessToken" --output tsv
+        
+        $Response = Get-Content "./vss-extension.json"
 
+        $ResponseObject = $Response | ConvertFrom-Json
 
-  # - task: PowerShell@2
-  #   inputs:
-  #     targetType: 'inline'
-  #     script: |
-  #       Write-Host "Logging in with a service principal"
-        
-  #       # az login --service-principal --tenant <tenant-id> --username <app-id> --password <password-or-cert>
-        
-  #       az login  --allow-no-subscriptions --service-principal --tenant 72f988bf-86f1-41af-91ab-2d7cd011db47 --username $(SP-Client-ID) --password $(PipelineSpSecret)
-        
-  #       Write-Host "Obtain access token for Service Principal"
-        
-  #       $accessToken = az account get-access-token --resource 499b84ac-1321-427f-aa17-267ca6975798 --query "accessToken" --output tsv
-        
-  #       $Response = Get-Content "
-
-  #       $ResponseObject = $Response | ConvertFrom-Json
-
-  #       tfx extension publish --publisher $ResponseObject.publisher --auth-type pat -t $accessToken
+        tfx extension publish --publisher $ResponseObject.publisher --auth-type pat -t $accessToken
     
