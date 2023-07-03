@@ -30,6 +30,14 @@ jobs:
       SecretsFilter: 'PipelineSpSecret, SP-Client-ID'
       RunAsPreJob: false
 
+  - task: PowerShell@2
+    inputs:
+      targetType: 'inline'
+      script: |
+        # Write your PowerShell commands here.
+        
+        Write-Host "Hello World"
+
   - task: PublishExtensionSP@1
     inputs:
       TenantID: '72f988bf-86f1-41af-91ab-2d7cd011db47'
