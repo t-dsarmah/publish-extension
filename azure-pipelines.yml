@@ -1,5 +1,8 @@
 # Publishing extensions to VS Marketplace using SP
 
+trigger:
+- publish-extension
+
 jobs:
 - job: publish_vsix
   displayName: Publish VSIX
