@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "azure-devops-extension-sdk": "^3.1.2",
-    "tfx-cli": "^0.14.0"
-  }
-}
