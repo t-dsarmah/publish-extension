@@ -21,4 +21,9 @@ jobs:
       SecretsFilter: 'PipelineSpSecret, SP-Client-ID'
       RunAsPreJob: false
 
-  
+  - task: PublishVSExtensionUsingSP@1
+    inputs:
+      TenantID: '72f988bf-86f1-41af-91ab-2d7cd011db47'
+      ManifestFile: 'vss-extension.json'
+    env:
+      
