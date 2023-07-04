@@ -2,7 +2,7 @@
     "manifestVersion": 1,
     "id": "my-first-extension-deepam-sarmah",
     "publisher": "dsarmah",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "name": "My First Extension",
     "description": "A sample Visual Studio Services extension",
     "public": false,
