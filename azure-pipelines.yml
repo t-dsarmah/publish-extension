@@ -1,9 +1,6 @@
 # Publishing extensions to VS Marketplace using SP
 # This is an end-to-end solution for publishing extensions to VS Marketplace using Service Principal and Azure Key Vault.
 
-trigger:
-  - main
-
 jobs:
 - job: publish_vsix
   displayName: Publish VSIX
