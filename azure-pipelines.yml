@@ -1,4 +1,5 @@
 # Publishing extensions to VS Marketplace using SP
+# This is an end-to-end solution for publishing extensions to VS Marketplace using Service Principal and Azure Key Vault.
 
 trigger:
   - main
@@ -21,7 +22,7 @@ jobs:
         # Installing required npm packages
         
         npm i azure-devops-extension-sdk
-        npm install vss-web-extension-sdk
+        npm i vss-web-extension-sdk
   
   - task: AzureKeyVault@2
     inputs:
