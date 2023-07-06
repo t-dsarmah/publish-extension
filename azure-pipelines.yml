@@ -1,4 +1,4 @@
-# Publishing extensions to VS Marketplace using SP
+# Sample pipeline to show GetSPUserID custom task
 
 jobs:
 - job: publish_vsix
