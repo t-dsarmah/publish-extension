@@ -1,8 +1,8 @@
 # Sample pipeline to show GetSPUserID custom task
 
 jobs:
-- job: publish_vsix
-  displayName: Publish VSIX
+- job: User_ID_SP
+  displayName: User ID of SP
   pool:
     vmImage: 'windows-latest'
   steps:
